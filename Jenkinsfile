@@ -10,7 +10,7 @@ steps {
 // Get some code from a GitHub repository
 git 'https://github.com/riveracu/maven-hello-world.git'
 // To run Maven on a Windows agent, use
-bat "mvn -Dmaven.test.failure.ignore=true clean package"
+sg "mvn -Dmaven.test.failure.ignore=true clean package"
 }
 post {
 // If Maven was able to run the tests, even if some of the test
@@ -24,7 +24,7 @@ archiveArtifacts 'target/*.jar'
 stage('Code Analysis') {
 steps {
 withSonarQubeEnv('SONAR_Q') {
-bat 'mvn clean package sonar:sonar'
+sh 'mvn clean package sonar:sonar'
 }
 }
 }
