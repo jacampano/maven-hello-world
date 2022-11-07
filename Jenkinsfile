@@ -8,9 +8,9 @@ stages {
 stage('Build') {
 steps {
 // Get some code from a GitHub repository
-git 'https://github.com/riveracu/maven-hello-world.git'
+git 'https://github.com/jacampano/maven-hello-world.git'
 // To run Maven on a Windows agent, use
-sg "mvn -Dmaven.test.failure.ignore=true clean package"
+sh "mvn -Dmaven.test.failure.ignore=true clean package"
 }
 post {
 // If Maven was able to run the tests, even if some of the test
